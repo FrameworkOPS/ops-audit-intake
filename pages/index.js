@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ArrowRight, CheckCircle, AlertCircle, ChevronDown } from 'lucide-react';
 
 export default function RoofingOpsDiagnostic() {
   const [currentStep, setCurrentStep] = useState('intro'); // intro, quiz, results
@@ -502,7 +501,7 @@ export default function RoofingOpsDiagnostic() {
                 gap: '0.5rem',
               }}
             >
-              Start Diagnostic <ArrowRight size={18} />
+              Start Diagnostic →
             </button>
 
             <p style={{ fontSize: '12px', color: '#999', marginTop: '1.5rem', textAlign: 'center' }}>
