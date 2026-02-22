@@ -424,13 +424,16 @@ export default function RoofingOpsDiagnostic() {
       }}
     >
       {/* Header */}
-      <div style={{ backgroundColor: '#1F3A5F', color: 'white', padding: '2rem' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-          <div style={{ fontSize: '24px', fontWeight: '700', marginBottom: '0.5rem' }}>
-            FRAMEWORK OPS
-          </div>
-          <div style={{ fontSize: '14px', opacity: 0.9 }}>
-            Roofing Operations Health Check
+      <div style={{ backgroundColor: '#1F3A5F', color: 'white', padding: '1.5rem 2rem' }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <img src="/logo.png" alt="Framework Ops" style={{ height: '50px', width: 'auto' }} />
+          <div>
+            <div style={{ fontSize: '24px', fontWeight: '700', marginBottom: '0.25rem' }}>
+              FRAMEWORK OPS
+            </div>
+            <div style={{ fontSize: '14px', opacity: 0.9 }}>
+              Roofing Operations Health Check
+            </div>
           </div>
         </div>
       </div>
