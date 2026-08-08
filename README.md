@@ -1,40 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Roofing Operations Health Check — Framework Ops
 
-## Getting Started
+A lead-generating operations audit intake for roofing contractors. Prospects answer a
+36-question diagnostic across 8 operational disciplines and instantly receive an
+interactive, benchmarked report.
 
-First, run the development server:
+## What's inside
+
+- **Intake flow** (`pages/index.js`) — company profile step (revenue band, team size,
+  market focus), then a sectioned questionnaire with auto-advance, keyboard shortcuts
+  (`1`–`9`, arrow keys), progress tracking, and localStorage auto-save/resume.
+- **Question bank & scoring** (`data/audit.js`) — 8 categories (Sales & Estimating,
+  Production, Handoff, Job Costing, Team, Technology, Financials, Customer Experience),
+  industry benchmarks, a 5-level maturity model, per-question recommendations, and a
+  revenue-band-driven margin-at-risk model.
+- **Interactive report** (`components/Report.js`, `components/charts.js`) —
+  animated score gauge, radar chart vs. industry benchmark (hover tooltips,
+  click-to-jump), category drill-down accordions with per-answer recommendations,
+  a ranked priority roadmap, financial impact breakdown, and print/PDF support.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Lead capture webhook
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Completed audits POST the full payload (profile, scores, responses) to a Make.com
+webhook. Set it via environment variable:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```
+NEXT_PUBLIC_MAKE_WEBHOOK_URL=https://hook.make.com/your-webhook-id
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Without it, submission fails silently and the report still renders.
 
-## Learn More
+## Deploy
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Deployed on Vercel (`vercel.json` uses the `@vercel/next` builder). Add
+`NEXT_PUBLIC_MAKE_WEBHOOK_URL` in the Vercel project settings.
